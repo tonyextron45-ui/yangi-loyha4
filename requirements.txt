@@ -1,0 +1,6 @@
+aiogram>=3.13
+libsql-client>=0.3
+python-dotenv>=1.0
+apscheduler>=3.10
+aiohttp>=3.10
+uvloop>=0.19 ; sys_platform != "win32"

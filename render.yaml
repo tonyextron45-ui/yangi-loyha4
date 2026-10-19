@@ -1,0 +1,32 @@
+# Render Blueprint — «New +» → «Blueprint» → shu repo tanlanadi.
+# Bepul Web Service: polling + health-server. Ma'lumot Turso'da (doimiy).
+services:
+  - type: web
+    name: tarjima-kinoman-bot
+    runtime: python
+    plan: free
+    region: frankfurt          # O'zbekiston/MDH uchun eng yaqin bepul region
+    buildCommand: pip install -r requirements.txt
+    startCommand: python bot.py
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.7"
+      # ⚠️ Quyidagilarni Render dashboard'da qo'lda kiriting (Environment bo'limi):
+      - key: BOT_TOKEN
+        sync: false
+      - key: MAIN_ADMIN_ID
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: TURSO_DATABASE_URL
+        sync: false
+      - key: TURSO_AUTH_TOKEN
+        sync: false
+      # Ixtiyoriy:
+      - key: AUTO_APPROVE
+        value: "false"
+      - key: PROTECT_CONTENT
+        value: "false"
+      - key: SUB_CACHE_TTL
+        value: "600"
